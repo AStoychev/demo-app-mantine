@@ -6,14 +6,25 @@
 @import '@mantine/core/styles.css';
 
 body {
-    background-color: rgb(25,25,25);
-    color: #ffffff;
+    /* background-color: rgb(25, 25, 25); */
+    /* color: #ffffff; */
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
     height: 100%;
+    overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body[data-theme='light'] {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body[data-theme='dark'] {
+    background-color: #1a1b1e;
+    color: #ffffff;
 }
 
 .container {
