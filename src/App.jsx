@@ -1,17 +1,29 @@
 import { useState } from 'react';
-import { Group, Button, MantineProvider } from '@mantine/core';
-import { ChangeTheme } from './components/changeTheme/ChangeTheme';
-import { Header } from './components/header/Header';
-// import { Table } from './components/table/Table';
-import './App.css'
+import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
+import { Headers } from './components/header/Header';
+import { Table } from './components/table/Table';
+import './App.css';
 
 function App() {
+    // State to manage light/dark theme
+    const localStorageTheme = localStorage.getItem('theme');
+    const [colorScheme, setColorScheme] = useState(localStorageTheme);
+
+    // Function to toggle between light and dark mode
+    const toggleColorScheme = (value) => {
+        setColorScheme(value || (colorScheme === 'light' ? 'dark' : 'light'));
+    };
+
+    localStorage.setItem('theme', colorScheme)
 
     return (
-        <MantineProvider defaultColorScheme="light">
-            <ChangeTheme />
-        </MantineProvider>
-    )
+        <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+            <MantineProvider theme={{ colorScheme }}>
+                <Headers />
+                <Table />
+            </MantineProvider>
+        </ColorSchemeProvider>
+    );
 }
 
-export default App
+export default App;
