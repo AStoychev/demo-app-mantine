@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { Headers } from './components/header/Header';
 import { Table } from './components/table/Table';
+// import { OpenCloseSideBarButtons } from './components/Buttons/OpenCloseSideBarButtons';
+import { SideBar } from './components/sideBar/SideBar';
+import { Footer } from './components/footer/Footer';
 import './App.css';
 
 function App() {
@@ -20,7 +23,10 @@ function App() {
         <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
             <MantineProvider theme={{ colorScheme }}>
                 <Headers />
+                {/* <OpenCloseSideBarButtons/> */}
+                <SideBar />
                 <Table />
+                <Footer />
             </MantineProvider>
         </ColorSchemeProvider>
     );
