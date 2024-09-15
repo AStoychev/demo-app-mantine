@@ -1,20 +1,17 @@
-import { CloseButton } from "@mantine/core"
+import { FaBars } from "react-icons/fa";
+import styles from "./OpenCloseSideBarButtons.module.css";
 
-const styles = {
-    position: "absolute",
-    top: "0px",
-    dispplay: "flex",
-    textAlign: "center",
-    alignItems: "center",
-    justifyContent: "center",
-    border: "3px solid red",
-    zIndex: 100
-}
-
-export const OpenCloseSideBarButtons = ({ open }) => {
+export const OpenCloseSideBarButtons = ({ open, close, opened }) => {
     return (
-        <div style={styles}>
-            <CloseButton size="sm" />
+        <div className={styles.wrapper} onClick={opened ? close : open}>
+            <div
+                style={{
+                    transform: opened ? "rotate(0deg)" : "rotate(180deg)",
+                }}
+                className={styles.iconWrapper}
+            >
+                <FaBars />
+            </div>
         </div>
-    )
-}
+    );
+};

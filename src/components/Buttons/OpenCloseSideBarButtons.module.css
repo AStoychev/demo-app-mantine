@@ -1,0 +1,17 @@
+.wrapper {
+    position: absolute;
+    top: 0;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.iconWrapper {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
