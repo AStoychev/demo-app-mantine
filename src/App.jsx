@@ -10,7 +10,6 @@ function App() {
     // State to manage light/dark theme
     const localStorageTheme = localStorage.getItem('theme');
     const [colorScheme, setColorScheme] = useState(localStorageTheme);
-
     // Function to toggle between light and dark mode
     const toggleColorScheme = (value) => {
         setColorScheme(value || (colorScheme === 'light' ? 'dark' : 'light'));
