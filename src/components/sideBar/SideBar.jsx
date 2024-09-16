@@ -1,16 +1,24 @@
 import { useDisclosure } from '@mantine/hooks';
-import { Drawer, Button } from '@mantine/core';
+import { Drawer } from '@mantine/core';
+import { OpenCloseSideBarButtons } from '../Buttons/OpenCloseSideBarButtons';
 
 export const SideBar = () => {
-    const [opened, { open, close }] = useDisclosure(false);
+    const [opened, { open, close, toggle }] = useDisclosure(false);
 
     return (
         <>
-            <Drawer offset={8} radius="md" opened={opened} onClose={close} title="Authentication">
-                {/* Drawer content */}
+            <Drawer offset={8} radius="md" opened={opened} onClose={close} title="Authentication"
+                closeButtonProps={{
+                    size: 'lg',
+                    // color: 'red',
+                    // style: { borderRadius: '50%', borderColor: 'black', color: 'black' }, // Custom CSS styles
+                }}
+            >
+                <div>Table</div>
+                <div>Charts</div>
             </Drawer>
 
-            {/* <Button onClick={open}>Open Drawer</Button> */}
+            <OpenCloseSideBarButtons open={open} close={close} toggle={toggle} />
         </>
     );
 }

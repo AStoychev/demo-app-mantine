@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { MantineReactTable, useMantineReactTable } from 'mantine-react-table';
+import { useCurrencyData } from '../../hooks/useCurrencyData';
 
 //nested data is ok, see accessorKeys in ColumnDef below
 const data = [
@@ -51,6 +52,8 @@ const data = [
 ];
 
 export const Table = () => {
+    const { data: currencyData, error, isLoading, isError } = useCurrencyData('USD', "EUR");
+
     //should be memoized or stable
     const columns = useMemo(
         () => [
