@@ -15,7 +15,6 @@ function App() {
     const toggleColorScheme = (value) => {
         setColorScheme(value || (colorScheme === 'light' ? 'dark' : 'light'));
     };
-
     localStorage.setItem('theme', colorScheme)
 
     return (
