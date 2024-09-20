@@ -25,7 +25,7 @@ export const Headers = () => {
     return (
         <Header className={styles.header} height={60}>
             <div className={styles.leftSide}>
-                <Text weight={500}>My App</Text>
+                {/* <Text weight={500}>My App</Text> */}
                 <Search />
             </div>
             <div className={styles.rightSide}>
