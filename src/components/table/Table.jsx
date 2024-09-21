@@ -56,7 +56,6 @@ export const Table = () => {
 
     if (currencyData && currencyData.results && currencyData.results.length > 0) {
         const result = currencyData?.results[0];
-        // console.log(111111111, result)
         const openPrice = result.o; // Opening price (start of the day)
         const closePrice = result.c; // Closing price (end of the day) or Sell price
         const highPrice = result.h; // Highest price of the day
