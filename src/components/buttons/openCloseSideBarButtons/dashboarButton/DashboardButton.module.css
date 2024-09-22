@@ -1,0 +1,13 @@
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.wrapper:hover {
+    background-color: #20294cd3;
+}
