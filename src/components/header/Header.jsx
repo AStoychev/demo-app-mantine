@@ -20,7 +20,6 @@ const groupStyles = {
 
 export const Headers = () => {
     const theme = useMantineTheme();
-    const color = theme.colors;
 
     return (
         <Header className={styles.header} height={60}>

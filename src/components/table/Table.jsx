@@ -12,12 +12,11 @@ export const Table = () => {
         if (currencyData && currencyData.results && currencyData.results.length > 0) {
             const instruments = currencyData.ticker.split(":")[1];
             const result = currencyData.results[0];
-            const openPrice = result.o; // Opening price
-            const closePrice = result.c; // Closing price
-            const highPrice = result.h; // Highest price
-            const lowPrice = result.l; // Lowest price
+            const openPrice = result.o;
+            const closePrice = result.c;
+            const highPrice = result.h;
+            const lowPrice = result.l;
 
-            // Calculate Change
             const change = (closePrice - openPrice).toFixed(10);
 
             // console.log('Open Price:', openPrice);
@@ -36,13 +35,12 @@ export const Table = () => {
                 change: change,
                 close: closePrice,
                 open: openPrice,
-            }]); // Set data as an array
+            }]);
         } else {
             console.log('No results found');
         }
-    }, [currencyData]); // Depend on cur
+    }, [currencyData]);
 
-    //should be memoized or stable
     const columns = useMemo(
         () => [
             {
@@ -50,7 +48,7 @@ export const Table = () => {
                 header: 'Instrument',
             },
             {
-                accessorKey: 'price', //normal accessorKey
+                accessorKey: 'price',
                 header: 'Price',
             },
             {
@@ -70,7 +68,7 @@ export const Table = () => {
                 header: 'Close Price',
             },
             {
-                accessorKey: 'open', //access nested data with dot notation
+                accessorKey: 'open',
                 header: 'Open Price',
             },
         ],
@@ -79,7 +77,7 @@ export const Table = () => {
 
     const table = useMantineReactTable({
         columns,
-        data, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
+        data,
     });
 
     return <MantineReactTable table={table} />;
