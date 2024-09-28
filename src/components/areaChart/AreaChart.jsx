@@ -1,59 +1,82 @@
-// Import dependencies
-import React from 'react';
-import { Line } from 'react-chartjs-2';
-import {
-    Chart as ChartJS,
-    LineElement,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    Tooltip,
-    Legend,
-} from 'chart.js';
-
-// Register the necessary chart components from Chart.js
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
+import { useState, useEffect } from "react";
+import { Line } from "react-chartjs-2";
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
+import { fetchHistoricalData } from "../../functions/fetchHistoricalData";
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
+import styles from "./AreaChart.module.css";
 
 export const AreaChart = () => {
-    // Data for the Line Chart
-    const data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'], // X-axis labels
+    const [chartData, setChartData] = useState({
+        labels: [],
         datasets: [
             {
-                label: 'Sales', // The label for the dataset
-                data: [30, 50, 70, 40, 85, 60], // Y-axis values
-                borderColor: 'rgba(75, 192, 192, 1)', // Line color
-                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Fill under the line
-                borderWidth: 2, // Line thickness
-                pointBackgroundColor: 'rgba(75, 192, 192, 1)', // Color of the points
+                label: "Close Price",
+                data: [],
+                fill: true,
+                borderColor: "rgba(75,192,192,1)",
+                backgroundColor: "rgba(75,192,192,0.2)",
+                tension: 0.3,
             },
         ],
-    };
+    });
 
-    // Options to customize the appearance of the chart
-    const options = {
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const data = await fetchHistoricalData(); // Fetch data from the API
+
+                if (data && data.t && data.c) {
+                    const timestamps = data.t.map((timestamp) => new Date(timestamp).toLocaleDateString()); // Convert timestamps to human-readable dates
+                    const closePrices = data.c;
+
+                    setChartData({
+                        labels: timestamps,
+                        datasets: [
+                            {
+                                label: "Close Price",
+                                data: closePrices,
+                                fill: true,
+                                borderColor: "rgba(75,192,192,1)",
+                                backgroundColor: "rgba(75,192,192,0.2)",
+                                tension: 0.3,
+                            },
+                        ],
+                    });
+                } else {
+                    console.error("No valid data returned");
+                }
+            } catch (error) {
+                console.error("Error fetching data", error);
+            }
+        };
+
+        getData();
+    }, []);
+
+    const chartOptions = {
+        maintainAspectRatio: false,
         responsive: true,
         scales: {
             x: {
                 title: {
                     display: true,
-                    text: 'Months', // X-axis title
+                    text: "Date",
                 },
             },
             y: {
-                beginAtZero: true, // Ensures Y-axis starts at 0
                 title: {
                     display: true,
-                    text: 'Sales Value', // Y-axis title
+                    text: "Price",
                 },
+                beginAtZero: false,
             },
         },
     };
 
     return (
-        <div>
-            <h2>Sales Data</h2>
-            <Line data={data} options={options} />
+        <div className={styles.chartWrapper}>
+            <h2>Area Chart - Close Prices</h2>
+            <Line data={chartData} options={chartOptions}  className={styles.line}/>
         </div>
     );
 };
