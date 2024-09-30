@@ -1,57 +1,39 @@
-import { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
-import { fetchHistoricalData } from "../../functions/fetchHistoricalData";
+import { useHistoricalData } from "../../hooks/useHistoricalData";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 import styles from "./AreaChart.module.css";
 
-export const AreaChart = () => {
-    const [chartData, setChartData] = useState({
-        labels: [],
+export const AreaChart = ({ instruments }) => {
+    const [currencyOne, currencyTwo] = instruments.split("/");
+    // const currencyOne = "EUR";
+    // const currencyTwo = "USD";
+    const { data, isLoading, error } = useHistoricalData(currencyOne, currencyTwo);
+
+    if (isLoading) {
+        return <p>Loading chart...</p>;
+    }
+
+    if (error) {
+        return <p>Error fetching chart data</p>;
+    }
+
+    const timestamps = data.t.map((timestamp) => new Date(timestamp).toLocaleDateString()); // Convert timestamps to human-readable dates
+    const closePrices = data.c;
+
+    const chartData = {
+        labels: timestamps,
         datasets: [
             {
-                label: "Close Price",
-                data: [],
+                label: `${data.pairs[0]} / ${data.pairs[1]}`,
+                data: closePrices,
                 fill: true,
                 borderColor: "rgba(75,192,192,1)",
                 backgroundColor: "rgba(75,192,192,0.2)",
                 tension: 0.3,
             },
         ],
-    });
-
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const data = await fetchHistoricalData(); // Fetch data from the API
-
-                if (data && data.t && data.c) {
-                    const timestamps = data.t.map((timestamp) => new Date(timestamp).toLocaleDateString()); // Convert timestamps to human-readable dates
-                    const closePrices = data.c;
-
-                    setChartData({
-                        labels: timestamps,
-                        datasets: [
-                            {
-                                label: "Close Price",
-                                data: closePrices,
-                                fill: true,
-                                borderColor: "rgba(75,192,192,1)",
-                                backgroundColor: "rgba(75,192,192,0.2)",
-                                tension: 0.3,
-                            },
-                        ],
-                    });
-                } else {
-                    console.error("No valid data returned");
-                }
-            } catch (error) {
-                console.error("Error fetching data", error);
-            }
-        };
-
-        getData();
-    }, []);
+    }
 
     const chartOptions = {
         maintainAspectRatio: false,
@@ -75,8 +57,8 @@ export const AreaChart = () => {
 
     return (
         <div className={styles.chartWrapper}>
-            <h2>Area Chart - Close Prices</h2>
-            <Line data={chartData} options={chartOptions}  className={styles.line}/>
+            <h2>Area Chart</h2>
+            <Line data={chartData} options={chartOptions} className={styles.line} />
         </div>
     );
 };

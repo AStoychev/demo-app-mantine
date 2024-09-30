@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { Headers } from './components/header/Header';
-import { AreaChart } from './components/areaChart/AreaChart';
 import { Table } from './components/table/Table';
 import { SideBar } from './components/sideBar/SideBar';
 import { Footer } from './components/footer/Footer';
@@ -22,11 +21,14 @@ function App() {
     return (
         <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
             <MantineProvider theme={{ colorScheme }}>
-                <Headers />
-                <SideBar />
-                <Table />
-                <AreaChart />
-                <Footer />
+                <div className="main-content">
+                    <div>
+                        <Headers />
+                        <SideBar />
+                        <Table />
+                    </div>
+                    <Footer />
+                </div>
             </MantineProvider>
         </ColorSchemeProvider>
     );
