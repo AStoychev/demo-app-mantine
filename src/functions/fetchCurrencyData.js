@@ -8,33 +8,61 @@ export const fetchCurrencyData = async (fromCurrency, toCurrency) => {
     oneMonthAgo.setMonth(currentDate.getMonth() - 1);
 
     try {
-
         const { data } = await axios.get(`https://api.polygon.io/v2/aggs/ticker/C:${fromCurrency}${toCurrency}/prev?apiKey=${API_KEY}`);
-
-        // if (data && data.results && data.results.length > 0) {
-        //     const result = data.results[0];
-
-        //     const openPrice = result.o; // Opening price (start of the day)
-        //     const closePrice = result.c; // Closing price (end of the day) or Sell price
-        //     const highPrice = result.h; // Highest price of the day
-        //     const lowPrice = result.l; // Lowest price of the day
-
-        //     // Calculate Change
-        //     const change = closePrice - openPrice;
-
-        //     console.log('Open Price:', openPrice);
-        //     console.log('Close Price (Sell):', closePrice);
-        //     console.log('Change:', change);
-        //     console.log('USR/EUR Price:', closePrice); // Assuming closing price is the price you need
-        //     console.log('High Price:', highPrice);
-        //     console.log('Low Price: ', lowPrice)
-        // } else {
-        //     console.log('No results found');
-        // }
-
         return data
     }
     catch (error) {
-        console.log('ERROR', error)
+        if (error.response && error.response.status === 429) {
+            console.log("Rate limit exceeded. Retrying...");
+            // Retry after some delay
+            await new Promise(resolve => setTimeout(resolve, 10000)); // wait for 1 second
+            console.log("ERROR REQUEST")
+            return fetchCurrencyData(fromCurrency, toCurrency); // retry the request
+        }
+        throw error; //
     }
 }
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+export const fetchAllCurrencyData = async () => {
+    const currencyPairs = [
+        { from: 'EUR', to: 'USD' },
+        { from: 'GBP', to: 'USD' },
+        { from: 'USD', to: 'CHF' },
+        // { from: 'USD', to: 'JPY' },
+        // { from: 'USD', to: 'CAD' },
+        // { from: 'AUD', to: 'USD' },
+        // { from: 'NZD', to: 'USD' },
+    ];
+
+    const fetchPromises = currencyPairs.map(pair =>
+        fetchCurrencyData(pair.from, pair.to).then(data => ({
+            from: pair.from,
+            to: pair.to,
+            data,
+        }))
+    );
+
+    try {
+        const results = await Promise.all(fetchPromises);
+        return results; // Array of objects containing from, to, and data
+    } catch (error) {
+        console.error('Error fetching all currency data:', error);
+        throw error; // Throw error for react-query to catch
+    }
+};
+
+// export const fetchCurrencyData = async (fromCurrency, toCurrency) => {
+//     const currentDate = new Date();
+//     const oneMonthAgo = new Date();
+//     oneMonthAgo.setMonth(currentDate.getMonth() - 1);
+
+//     try {
+//         const { data } = await axios.get(`https://api.polygon.io/v2/aggs/ticker/C:${fromCurrency}${toCurrency}/prev?apiKey=${API_KEY}`);
+//         return data
+//     }
+//     catch (error) {
+//         console.log('ERROR', error)
+//     }
+// }

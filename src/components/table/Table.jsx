@@ -1,23 +1,49 @@
 import { useState, useEffect, useMemo } from 'react';
+import { Accordion, Text } from '@mantine/core';
 import { MantineReactTable, useMantineReactTable } from 'mantine-react-table';
 import { useCurrencyData } from '../../hooks/useCurrencyData';
+import { AreaChart } from '../areaChart/AreaChart';
+
+import styles from "./Table.module.css";
 
 export const Table = () => {
     const [data, setData] = useState([])
-    const firstInstrument = "USD";
-    const secondInstrument = "EUR";
-    const { data: currencyData, error, isLoading, isError } = useCurrencyData(firstInstrument, secondInstrument);
+    const firstInstrument = "EUR";
+    const secondInstrument = "USD";
+    const { data: currencyData, error, isLoading, isError } = useCurrencyData();
 
     useEffect(() => {
-        if (currencyData && currencyData.results && currencyData.results.length > 0) {
-            const instruments = currencyData.ticker.split(":")[1];
-            const result = currencyData.results[0];
-            const openPrice = result.o;
-            const closePrice = result.c;
-            const highPrice = result.h;
-            const lowPrice = result.l;
+        if (currencyData && currencyData.length > 0) {
+            const transformedData = currencyData.map(item => {
+                const { from, to, data } = item;
+                const instruments = data?.ticker.split(":")[1];
+                const result = data?.results[0];
+                const openPrice = result?.o;
+                const closePrice = result?.c;
+                const highPrice = result?.h;
+                const lowPrice = result?.l;
 
-            const change = (closePrice - openPrice).toFixed(10);
+                const change = (closePrice - openPrice).toFixed(10);
+
+                return {
+                    instrument: `${from}/${to}`,
+                    price: closePrice,
+                    lowHigh: `${lowPrice} / ${highPrice}`,
+                    change: change,
+                    close: closePrice,
+                    open: openPrice,
+                };
+
+            })
+            setData(transformedData)
+            // const instruments = currencyData.ticker.split(":")[1];
+            // const result = currencyData.results[0];
+            // const openPrice = result.o;
+            // const closePrice = result.c;
+            // const highPrice = result.h;
+            // const lowPrice = result.l;
+
+            // const change = (closePrice - openPrice).toFixed(10);
 
             // console.log('Open Price:', openPrice);
             // console.log('Close Price (Sell):', closePrice);
@@ -26,18 +52,14 @@ export const Table = () => {
             // console.log('High Price:', highPrice);
             // console.log('Low Price: ', lowPrice)
 
-
-            setData([{
-                instrument: `${firstInstrument}/${secondInstrument}`,
-                price: closePrice,
-                low: lowPrice,
-                high: highPrice,
-                change: change,
-                close: closePrice,
-                open: openPrice,
-            }]);
-        } else {
-            console.log('No results found');
+            // setData([{
+            //     instrument: `${firstInstrument}/${secondInstrument}`,
+            //     price: closePrice,
+            //     lowHigh: `${lowPrice} / ${highPrice}`,
+            //     change: change,
+            //     close: closePrice,
+            //     open: openPrice,
+            // }]);
         }
     }, [currencyData]);
 
@@ -52,24 +74,23 @@ export const Table = () => {
                 header: 'Price',
             },
             {
-                accessorKey: 'low',
-                header: 'Low Price',
-            },
-            {
-                accessorKey: 'high',
-                header: 'High Price',
-            },
-            {
-                accessorKey: 'change',
-                header: 'Changes',
-            },
-            {
                 accessorKey: 'close',
                 header: 'Close Price',
             },
             {
                 accessorKey: 'open',
                 header: 'Open Price',
+            },
+            {
+                accessorKey: 'change',
+                header: 'Changes',
+            },
+            {
+                accessorKey: 'lowHigh',
+                header: 'Low / High',
+                enableSorting: false,
+                enableFiltering: false, // Disable filtering for this column
+                enableResizing: false,
             },
         ],
         [],
@@ -80,5 +101,22 @@ export const Table = () => {
         data,
     });
 
-    return <MantineReactTable table={table} />;
+    return (
+        <div className={styles.wrapper}>
+            <MantineReactTable
+                columns={columns}
+                data={data}
+                renderDetailPanel={({ row }) => (
+                    <Accordion defaultValue={null} transitionDuration={1000}>
+                        <Accordion.Item value={`row-${row.index}`}>
+                            <Text>{row.original.instrument}</Text>
+                            <div style={{ width: '100%', height: '420px' }}>
+                                <AreaChart instruments={data[row.index].instrument}/>
+                            </div>
+                        </Accordion.Item>
+                    </Accordion>
+                )}
+            />
+        </div>
+    )
 };
