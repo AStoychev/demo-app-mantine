@@ -3,7 +3,6 @@ import { DashboardButton } from '../buttons/openCloseSideBarButtons/dashboarButt
 import { ChangeTheme } from '../changeTheme/ChangeTheme';
 import { AiOutlineStock, AiOutlineNodeIndex } from "react-icons/ai";
 import { FcCurrencyExchange } from "react-icons/fc";
-import { fetchHistoricalData } from '../../functions/fetchHistoricalData';
 import styles from "./Header.module.css";
 
 const groupStyles = {
@@ -19,8 +18,6 @@ const groupStyles = {
 
 export const Headers = () => {
     const theme = useMantineTheme();
-
-    fetchHistoricalData();
 
     return (
         <Header className={styles.header} height={60}>

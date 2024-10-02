@@ -3,9 +3,7 @@ export const getDateBackOneMount = () => {
     const oneMonthBack = new Date(currentDate);
 
     oneMonthBack.setMonth(currentDate.getMonth() - 1);
-
     oneMonthBack.setMonth(currentDate.getMonth() - 1);
-
     oneMonthBack.setDate(oneMonthBack.getDate() - 1);
 
     if (oneMonthBack.getDate() !== currentDate.getDate() - 1) {
