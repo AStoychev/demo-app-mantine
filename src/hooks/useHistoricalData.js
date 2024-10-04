@@ -3,11 +3,10 @@ import { fetchHistoricalData } from '../functions/fetchHistoricalData';
 
 export const useHistoricalData = (currencyOne, currencyTwo) => {
     return useQuery({
-        queryKey: ['historicalData', currencyOne, currencyTwo],  // Unique query key
-        queryFn: () => fetchHistoricalData({ currencyOne, currencyTwo }),  // Function to fetch the data
-        staleTime: 1000 * 60 * 5,      // Cache data for 5 minutes
+        queryKey: ['historicalData', currencyOne, currencyTwo],
+        queryFn: () => fetchHistoricalData({ currencyOne, currencyTwo }),
+        staleTime: 1000 * 60 * 5,
         retry: (failureCount, error) => {
-            // Retry for network errors but not 429 errors
             if (error.response?.status === 429) {
                 return false;
             }

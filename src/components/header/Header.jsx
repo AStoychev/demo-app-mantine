@@ -1,4 +1,4 @@
-import { Header, Text, Group, UnstyledButton, useMantineTheme } from '@mantine/core';
+import { Header, Group, UnstyledButton, useMantineTheme } from '@mantine/core';
 import { DashboardButton } from '../buttons/openCloseSideBarButtons/dashboarButton/DashboardButton';
 import { ChangeTheme } from '../changeTheme/ChangeTheme';
 import { AiOutlineStock, AiOutlineNodeIndex } from "react-icons/ai";

@@ -8,8 +8,6 @@ import styles from "./Table.module.css";
 
 export const Table = () => {
     const [data, setData] = useState([])
-    const firstInstrument = "EUR";
-    const secondInstrument = "USD";
     const { data: currencyData, error, isLoading, isError } = useCurrencyData();
 
     useEffect(() => {
@@ -89,7 +87,7 @@ export const Table = () => {
                 accessorKey: 'lowHigh',
                 header: 'Low / High',
                 enableSorting: false,
-                enableFiltering: false, // Disable filtering for this column
+                enableFiltering: false,
                 enableResizing: false,
             },
         ],
