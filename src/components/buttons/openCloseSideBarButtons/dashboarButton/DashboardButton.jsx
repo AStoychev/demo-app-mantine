@@ -3,7 +3,7 @@ import { useState } from "react";
 import { MdDashboard } from "react-icons/md";
 import styles from "./DashboardButton.module.css";
 
-export const DashboardButton = ({ text, bg, color, hoverBg, }) => {
+export const DashboardButton = ({ text, bg, color, hoverBg }) => {
     const [isOnHover, setIsOnHover] = useState(false);
 
     const buttonStyle = {

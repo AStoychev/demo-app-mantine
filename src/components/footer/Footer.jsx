@@ -5,7 +5,7 @@ export const Footer = () => {
         <Container py="md" style={{ borderTop: '1px solid #e9ecef' }}>
             <Group position="apart">
                 <Text size="sm" color="dimmed">
-                    © 2024 Your Company
+                    © 2024 A.Stoychev
                 </Text>
                 <Group spacing="xs">
                     <Anchor href="#" size="sm">Privacy Policy</Anchor>

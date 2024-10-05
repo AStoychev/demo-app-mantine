@@ -1,5 +1,5 @@
 import { useDisclosure } from '@mantine/hooks';
-import { Drawer, Group, Flex, UnstyledButton, Button } from '@mantine/core';
+import { Drawer, Group, Flex, UnstyledButton } from '@mantine/core';
 import { OpenCloseSideBarButtons } from '../buttons/openCloseSideBarButtons/OpenCloseSideBarButtons';
 import { FaHome } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa6";
@@ -28,7 +28,6 @@ export const SideBar = () => {
                     size: 'lg',
                 }}
             >
-
                 <Flex
                     mih={50}
                     gap="md"
@@ -54,12 +53,11 @@ export const SideBar = () => {
                         <UnstyledButton>Settings</UnstyledButton>
                     </Group>
                     <Group sx={groupStyles}>
-                        <IoMdLogOut/>
+                        <IoMdLogOut />
                         <UnstyledButton>Logout</UnstyledButton>
                     </Group>
                 </Flex>
             </Drawer>
-
             <OpenCloseSideBarButtons open={open} close={close} toggle={toggle} />
         </>
     );
