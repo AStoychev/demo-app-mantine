@@ -10,6 +10,7 @@ export const Footer = () => {
                 <Group spacing="xs">
                     <Anchor href="#" size="sm">Privacy Policy</Anchor>
                     <Anchor href="#" size="sm">Terms of Service</Anchor>
+                    <Anchor href="https://astoychev.onrender.com/" size="sm">Contacts</Anchor>
                 </Group>
             </Group>
         </Container>
