@@ -22,7 +22,7 @@ function App() {
         <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
             <MantineProvider theme={{ colorScheme }}>
                 <div className="main-content">
-                    <div>
+                    <div className='content'>
                         <Headers />
                         <SideBar />
                         <Table />
