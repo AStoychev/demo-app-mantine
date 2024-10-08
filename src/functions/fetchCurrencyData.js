@@ -13,11 +13,15 @@ export const fetchCurrencyData = async (fromCurrency, toCurrency) => {
     }
     catch (error) {
         if (error.response && error.response.status === 429) {
-            console.log("Rate limit exceeded. Retrying...");
-            // Retry after some delay
-            await new Promise(resolve => setTimeout(resolve, 10000)); // wait for 1 second
-            console.log("ERROR REQUEST")
-            return fetchCurrencyData(fromCurrency, toCurrency); // retry the request
+            console.warn("Rate limit exceeded, retrying...");
+            await delay(10000); // Wait for 10 seconds before retrying
+            return fetchCurrencyData(fromCurrency, toCurrency);
+            
+            // console.log("Rate limit exceeded. Retrying...");
+            // // Retry after some delay
+            // await new Promise(resolve => setTimeout(resolve, 10000)); // wait for 1 second
+            // console.log("ERROR REQUEST")
+            // return fetchCurrencyData(fromCurrency, toCurrency); // retry the request
         }
         throw error; //
     }
@@ -30,10 +34,6 @@ export const fetchAllCurrencyData = async () => {
         { from: 'EUR', to: 'USD' },
         { from: 'GBP', to: 'USD' },
         { from: 'USD', to: 'CHF' },
-        // { from: 'USD', to: 'JPY' },
-        // { from: 'USD', to: 'CAD' },
-        // { from: 'AUD', to: 'USD' },
-        // { from: 'NZD', to: 'USD' },
     ];
 
     const fetchPromises = currencyPairs.map(pair =>
@@ -52,17 +52,3 @@ export const fetchAllCurrencyData = async () => {
         throw error; // Throw error for react-query to catch
     }
 };
-
-// export const fetchCurrencyData = async (fromCurrency, toCurrency) => {
-//     const currentDate = new Date();
-//     const oneMonthAgo = new Date();
-//     oneMonthAgo.setMonth(currentDate.getMonth() - 1);
-
-//     try {
-//         const { data } = await axios.get(`https://api.polygon.io/v2/aggs/ticker/C:${fromCurrency}${toCurrency}/prev?apiKey=${API_KEY}`);
-//         return data
-//     }
-//     catch (error) {
-//         console.log('ERROR', error)
-//     }
-// }
