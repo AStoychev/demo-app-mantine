@@ -34,30 +34,6 @@ export const Table = () => {
 
             })
             setData(transformedData)
-            // const instruments = currencyData.ticker.split(":")[1];
-            // const result = currencyData.results[0];
-            // const openPrice = result.o;
-            // const closePrice = result.c;
-            // const highPrice = result.h;
-            // const lowPrice = result.l;
-
-            // const change = (closePrice - openPrice).toFixed(10);
-
-            // console.log('Open Price:', openPrice);
-            // console.log('Close Price (Sell):', closePrice);
-            // console.log('Change:', change);
-            // console.log('USR/EUR Price:', closePrice); // Assuming closing price is the price you need
-            // console.log('High Price:', highPrice);
-            // console.log('Low Price: ', lowPrice)
-
-            // setData([{
-            //     instrument: `${firstInstrument}/${secondInstrument}`,
-            //     price: closePrice,
-            //     lowHigh: `${lowPrice} / ${highPrice}`,
-            //     change: change,
-            //     close: closePrice,
-            //     open: openPrice,
-            // }]);
         }
     }, [currencyData]);
 
@@ -108,7 +84,7 @@ export const Table = () => {
                     <Accordion defaultValue={null} transitionDuration={1000}>
                         <Accordion.Item value={`row-${row.index}`}>
                             <Text>{row.original.instrument}</Text>
-                            <div style={{ width: '100%', height: '420px' }}>
+                            <div style={{ width: '100%', height: '100%' }}>
                                 <AreaChart instruments={data[row.index].instrument}/>
                             </div>
                         </Accordion.Item>
