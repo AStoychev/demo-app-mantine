@@ -1,11 +1,8 @@
 import { useDisclosure } from '@mantine/hooks';
-import { Drawer, Group, Flex, UnstyledButton } from '@mantine/core';
+import { Drawer, Group, Text, Title, List, ThemeIcon, Flex, UnstyledButton, rem } from '@mantine/core';
 import { OpenCloseSideBarButtons } from '../buttons/openCloseSideBarButtons/OpenCloseSideBarButtons';
-import { FaHome } from "react-icons/fa";
-import { FaRegUser } from "react-icons/fa6";
-import { MdMailOutline } from "react-icons/md";
-import { VscSettingsGear } from "react-icons/vsc";
-import { IoMdLogOut } from "react-icons/io";
+import { TechnologiesList } from './Lists/TechnologiesList';
+import { FeaturesList } from './Lists/FeaturesList';
 
 const groupStyles = {
     width: '80%',
@@ -23,7 +20,7 @@ export const SideBar = () => {
 
     return (
         <>
-            <Drawer offset={8} radius="md" size="xs" opened={opened} onClose={close} title="Authentication"
+            <Drawer offset={8} radius="md" size="md" opened={opened} onClose={close}
                 closeButtonProps={{
                     size: 'lg',
                 }}
@@ -36,26 +33,26 @@ export const SideBar = () => {
                     direction="column"
                     wrap="wrap"
                 >
-                    <Group sx={groupStyles}>
-                        <FaHome />
-                        <UnstyledButton>Home</UnstyledButton>
-                    </Group>
-                    <Group sx={groupStyles}>
-                        <FaRegUser />
-                        <UnstyledButton>Profile</UnstyledButton>
-                    </Group>
-                    <Group sx={groupStyles}>
-                        <MdMailOutline />
-                        <UnstyledButton>Message</UnstyledButton>
-                    </Group>
-                    <Group sx={groupStyles}>
-                        <VscSettingsGear />
-                        <UnstyledButton>Settings</UnstyledButton>
-                    </Group>
-                    <Group sx={groupStyles}>
-                        <IoMdLogOut />
-                        <UnstyledButton>Logout</UnstyledButton>
-                    </Group>
+                    <Title order={3}>About This Demo App</Title>
+                    <Text>
+                        Welcome to my demo application! 🎉
+                    </Text>
+                    <Text>
+                        This app has been built to showcase my full-stack development skills using cutting-edge technologies.
+                        The purpose of this demo is to display Stock and Forex data, along with interactive charts
+                        and tables for enhanced user interaction and data visualization.
+                    </Text>
+                    <TechnologiesList />
+                    <FeaturesList />
+                    <Text>
+                        This app is for demonstration purposes only and is designed to highlight my expertise in building scalable,
+                        interactive applications. I hope this demo provides a clear example of how these technologies work together to
+                        create a rich, real-time data experience.
+                    </Text>
+
+                    <Text>
+                        Feel free to explore the features, and don’t hesitate to reach out with any questions or feedback!
+                    </Text>
                 </Flex>
             </Drawer>
             <OpenCloseSideBarButtons open={open} close={close} toggle={toggle} />
