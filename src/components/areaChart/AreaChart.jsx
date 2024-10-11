@@ -2,16 +2,24 @@ import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
 import { useHistoricalData } from "../../hooks/useHistoricalData";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
+import { MoonLoader } from "react-spinners";
 import styles from "./AreaChart.module.css";
 
 export const AreaChart = ({ instruments }) => {
+    const localStorageTheme = localStorage.getItem('theme');
     const [currencyOne, currencyTwo] = instruments.split("/");
-    // const currencyOne = "EUR";
-    // const currencyTwo = "USD";
     const { data, isLoading, error } = useHistoricalData(currencyOne, currencyTwo);
 
     if (isLoading) {
-        return <p>Loading chart...</p>;
+        return (
+            <div className={styles.spinnerWrapper}>
+                <p>Loading chart...</p>
+                <MoonLoader
+                    color={localStorageTheme === 'light' ? "#8607f3" : '#ffffff'}
+                    size={15}
+                />
+            </div>
+        )
     }
 
     if (error) {
