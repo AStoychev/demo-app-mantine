@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { Headers } from './components/header/Header';
-import { Table } from './components/table/Table';
 import { SideBar } from './components/sideBar/SideBar';
+import { Table } from './components/table/Table';
+import { Dashboard } from './components/dashboard/Dashboard';
 import { Footer } from './components/footer/Footer';
 import './App.css';
 
@@ -25,7 +27,11 @@ function App() {
                     <div className='content'>
                         <Headers />
                         <SideBar />
-                        <Table />
+                        <Routes>
+                            <Route path='/' element={<Table />} />
+                            <Route path='dashboard' element={<Dashboard />} />
+                            {/* <Table /> */}
+                        </Routes>
                     </div>
                     <Footer />
                 </div>

@@ -3,6 +3,7 @@ import { Accordion, Text } from '@mantine/core';
 import { MantineReactTable, useMantineReactTable } from 'mantine-react-table';
 import { useCurrencyData } from '../../hooks/useCurrencyData';
 import { AreaChart } from '../areaChart/AreaChart';
+import { Marquee } from '../marquee/Marquee';
 
 import styles from "./Table.module.css";
 
@@ -76,21 +77,24 @@ export const Table = () => {
     });
 
     return (
-        <div className={styles.wrapper}>
-            <MantineReactTable
-                columns={columns}
-                data={data}
-                renderDetailPanel={({ row }) => (
-                    <Accordion defaultValue={null} transitionDuration={1000}>
-                        <Accordion.Item value={`row-${row.index}`}>
-                            <Text>{row.original.instrument}</Text>
-                            <div style={{ width: '100%', height: '100%' }}>
-                                <AreaChart instruments={data[row.index].instrument}/>
-                            </div>
-                        </Accordion.Item>
-                    </Accordion>
-                )}
-            />
-        </div>
+        <>
+            <Marquee />
+            <div className={styles.wrapper}>
+                <MantineReactTable
+                    columns={columns}
+                    data={data}
+                    renderDetailPanel={({ row }) => (
+                        <Accordion defaultValue={null} transitionDuration={1000}>
+                            <Accordion.Item value={`row-${row.index}`}>
+                                <Text>{row.original.instrument}</Text>
+                                <div style={{ width: '100%', height: '100%' }}>
+                                    <AreaChart instruments={data[row.index].instrument} />
+                                </div>
+                            </Accordion.Item>
+                        </Accordion>
+                    )}
+                />
+            </div>
+        </>
     )
 };

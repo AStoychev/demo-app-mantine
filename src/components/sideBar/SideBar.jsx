@@ -1,19 +1,8 @@
 import { useDisclosure } from '@mantine/hooks';
-import { Drawer, Group, Text, Title, List, ThemeIcon, Flex, UnstyledButton, rem } from '@mantine/core';
+import { Drawer, Text, Title, Flex } from '@mantine/core';
 import { OpenCloseSideBarButtons } from '../buttons/openCloseSideBarButtons/OpenCloseSideBarButtons';
 import { TechnologiesList } from './Lists/TechnologiesList';
 import { FeaturesList } from './Lists/FeaturesList';
-
-const groupStyles = {
-    width: '80%',
-    padding: '10px',
-    borderRadius: '8px',
-    transition: 'background-color 0.3s, color 0.3s',
-    '&:hover': {
-        backgroundColor: '#4caf50',
-        color: 'white',
-    },
-}
 
 export const SideBar = () => {
     const [opened, { open, close, toggle }] = useDisclosure(false);

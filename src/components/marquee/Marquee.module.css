@@ -1,0 +1,25 @@
+.movingTextWrapper {
+    width: 100%; /* Full width of the screen */
+    overflow: hidden; /* Hide overflow */
+    /* background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; */
+}
+
+.movingText {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1.2rem;
+    animation: moveText 10s linear infinite; /* Adjust the time for speed */
+    /* color: #333; */
+    padding: 10px 0; /* Optional padding */
+}
+
+@keyframes moveText {
+    0% {
+        transform: translateX(100%); /* Start from outside the right side */
+    }
+    100% {
+        transform: translateX(-100%); /* Move to the left side */
+    }
+}

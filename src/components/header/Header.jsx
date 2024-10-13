@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Header, Group, UnstyledButton, useMantineTheme } from '@mantine/core';
 import { DashboardButton } from '../buttons/openCloseSideBarButtons/dashboarButton/DashboardButton';
 import { ChangeTheme } from '../changeTheme/ChangeTheme';
@@ -24,19 +25,19 @@ export const Headers = () => {
             <div className={styles.leftSide}>
             </div>
             <div className={styles.rightSide}>
-                <DashboardButton text={"Dashboard"} bg={theme.colorScheme === 'light' ? '#20294C' : '#5AA1C2'} color={'white'}/>
+                <Link to="/dashboard" className={styles.links}>
+                    <DashboardButton text={"Dashboard"} bg={theme.colorScheme === 'light' ? '#20294C' : '#5AA1C2'} color={'white'} />
+                </Link>
                 <Group sx={groupStyles}>
                     <AiOutlineStock />
                     <UnstyledButton>Stocks</UnstyledButton>
                 </Group>
-                <Group sx={groupStyles}>
-                    <FcCurrencyExchange />
-                    <UnstyledButton>Currency</UnstyledButton>
-                </Group>
-                <Group sx={groupStyles}>
-                    <AiOutlineNodeIndex />
-                    <UnstyledButton>Index</UnstyledButton>
-                </Group>
+                <Link to="/" className={styles.links}>
+                    <Group sx={groupStyles}>
+                        <FcCurrencyExchange />
+                        <UnstyledButton>Currency</UnstyledButton>
+                    </Group>
+                </Link>
                 <ChangeTheme />
             </div>
         </Header>
