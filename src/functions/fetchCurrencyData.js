@@ -14,16 +14,10 @@ export const fetchCurrencyData = async (fromCurrency, toCurrency) => {
     catch (error) {
         if (error.response && error.response.status === 429) {
             console.warn("Rate limit exceeded, retrying...");
-            await delay(10000); // Wait for 10 seconds before retrying
+            await delay(10000);
             return fetchCurrencyData(fromCurrency, toCurrency);
-            
-            // console.log("Rate limit exceeded. Retrying...");
-            // // Retry after some delay
-            // await new Promise(resolve => setTimeout(resolve, 10000)); // wait for 1 second
-            // console.log("ERROR REQUEST")
-            // return fetchCurrencyData(fromCurrency, toCurrency); // retry the request
         }
-        throw error; //
+        throw error;
     }
 }
 
@@ -46,9 +40,9 @@ export const fetchAllCurrencyData = async () => {
 
     try {
         const results = await Promise.all(fetchPromises);
-        return results; // Array of objects containing from, to, and data
+        return results;
     } catch (error) {
         console.error('Error fetching all currency data:', error);
-        throw error; // Throw error for react-query to catch
+        throw error;
     }
 };
