@@ -12,7 +12,7 @@ export const useHistoricalData = (currencyOne, currencyTwo) => {
             }
             return failureCount < 3;
         },
-        refetchOnWindowFocus: false,   // Disable refetching on window focus
+        refetchOnWindowFocus: false,
         onError: (error) => {
             console.error('Error fetching historical data:', error);
         },
