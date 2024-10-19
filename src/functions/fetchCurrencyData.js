@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
+const REQUEST_DELAY = 10000
 
 export const fetchCurrencyData = async (fromCurrency, toCurrency) => {
     const currentDate = new Date();
@@ -14,7 +15,7 @@ export const fetchCurrencyData = async (fromCurrency, toCurrency) => {
     catch (error) {
         if (error.response && error.response.status === 429) {
             console.warn("Rate limit exceeded, retrying...");
-            await delay(10000);
+            await delay(REQUEST_DELAY);
             return fetchCurrencyData(fromCurrency, toCurrency);
         }
         throw error;
