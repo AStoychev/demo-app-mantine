@@ -28,7 +28,6 @@ export const AreaChart = ({ instruments }) => {
 
     const timestamps = data.t.map((timestamp) => new Date(timestamp).toLocaleDateString()); // Convert timestamps to human-readable dates
     const closePrices = data.c;
-
     const chartData = {
         labels: timestamps,
         datasets: [
@@ -42,7 +41,6 @@ export const AreaChart = ({ instruments }) => {
             },
         ],
     }
-
     const chartOptions = {
         maintainAspectRatio: false,
         responsive: true,
