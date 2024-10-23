@@ -1,10 +1,15 @@
 import { useEffect } from 'react';
-import { useMantineColorScheme, Switch, useMantineTheme, rem } from '@mantine/core';
+import { Flex, Switch, Text, useMantineColorScheme, useMantineTheme, rem } from '@mantine/core';
+import { useHotkeys } from '@mantine/hooks';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
 
 export const ChangeTheme = () => {
     const { colorScheme, toggleColorScheme } = useMantineColorScheme();
     const theme = useMantineTheme();
+
+    useHotkeys([
+        ['ctrl+space', () => toggleColorScheme()],
+    ])
 
     const sunIcon = (
         <IconSun
@@ -27,13 +32,16 @@ export const ChangeTheme = () => {
     }, [colorScheme]);
 
     return (
-        <Switch
-            size="md"
-            color="dark.4"
-            onLabel={sunIcon}
-            offLabel={moonIcon}
-            checked={colorScheme === 'dark'}
-            onChange={() => toggleColorScheme()}
-        />
+        <Flex direction="column" mt="20px">
+            <Switch
+                size="md"
+                color="dark.4"
+                onLabel={sunIcon}
+                offLabel={moonIcon}
+                checked={colorScheme === 'dark'}
+                onChange={() => toggleColorScheme()}
+            />
+            <Text size="10px" c="dimmed">Ctrl+Space</Text>
+        </Flex>
     );
 };

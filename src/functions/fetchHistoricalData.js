@@ -35,7 +35,6 @@ export const fetchHistoricalData = async ({ currencyOne, currencyTwo }) => {
             // Log a generic error if no response
             console.error("Error fetching historical data: No response from server.");
         }
-
         throw error; // Rethrow to handle it elsewhere if needed
     }
 }
