@@ -12,6 +12,5 @@ export const getDateBackOneMount = () => {
 
     const formatCurrentDate = currentDate.toISOString().split('T')[0];
     const formatedBackOneMountDate = oneMonthBack.toISOString().split('T')[0];
-
     return { startDate: formatCurrentDate, endDate: formatedBackOneMountDate }
 }
