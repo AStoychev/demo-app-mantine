@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Accordion, Text } from '@mantine/core';
 import { MantineReactTable, useMantineReactTable } from 'mantine-react-table';
+import { useSelector } from 'react-redux';
 import { useCurrencyData } from '../../hooks/useCurrencyData';
 import { AreaChart } from '../areaChart/AreaChart';
 import { Marquee } from '../marquee/Marquee';
@@ -10,6 +11,7 @@ import styles from "./Table.module.css";
 export const Table = () => {
     const [data, setData] = useState([])
     const { data: currencyData, error, isLoading, isError } = useCurrencyData();
+    
 
     useEffect(() => {
         if (currencyData && currencyData.length > 0) {
@@ -21,7 +23,6 @@ export const Table = () => {
                 const closePrice = result?.c;
                 const highPrice = result?.h;
                 const lowPrice = result?.l;
-
                 const change = (closePrice - openPrice).toFixed(10);
 
                 return {
@@ -83,16 +84,18 @@ export const Table = () => {
                 <MantineReactTable
                     columns={columns}
                     data={data}
-                    renderDetailPanel={({ row }) => (
-                        <Accordion defaultValue={null} transitionDuration={1000}>
-                            <Accordion.Item value={`row-${row.index}`}>
-                                <Text>{row.original.instrument}</Text>
-                                <div style={{ width: '100%', height: '100%' }}>
-                                    <AreaChart instruments={data[row.index].instrument} />
-                                </div>
-                            </Accordion.Item>
-                        </Accordion>
-                    )}
+                    renderDetailPanel={
+                        ({ row }) => (
+                            <Accordion defaultValue={null} transitionDuration={1000}>
+                                <Accordion.Item value={`row-${row.index}`}>
+                                    <Text>{row.original.instrument}</Text>
+                                    <div style={{ width: '100%', height: '100%' }}>
+                                        <AreaChart instruments={data[row.index].instrument} />
+                                    </div>
+                                </Accordion.Item>
+                            </Accordion>
+                        )
+                    }
                 />
             </div>
         </>
