@@ -25,8 +25,8 @@ export const Headers = () => {
             <div className={styles.leftSide}>
             </div>
             <div className={styles.rightSide}>
-                <Link to="/dashboard" className={styles.links}>
-                    <DashboardButton text={"Dashboard"} bg={theme.colorScheme === 'light' ? '#20294C' : '#5AA1C2'} color={'white'} />
+                <Link to="/charts" className={styles.links}>
+                    <DashboardButton text={"Charts"} bg={theme.colorScheme === 'light' ? '#20294C' : '#5AA1C2'} color={'white'} />
                 </Link>
                 <Group sx={groupStyles}>
                     <AiOutlineStock />
