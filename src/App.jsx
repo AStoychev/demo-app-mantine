@@ -4,7 +4,7 @@ import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { Headers } from './components/header/Header';
 import { SideBar } from './components/sideBar/SideBar';
 import { Table } from './components/table/Table';
-import { Dashboard } from './components/dashboard/Dashboard';
+import { Chart } from './components/chart/Chart';
 import { Footer } from './components/footer/Footer';
 import './App.css';
 
@@ -29,7 +29,7 @@ function App() {
                         <SideBar />
                         <Routes>
                             <Route path='/' element={<Table />} />
-                            <Route path='dashboard' element={<Dashboard />} />
+                            <Route path='/charts' element={<Chart/>} />
                         </Routes>
                     </div>
                     <Footer />
