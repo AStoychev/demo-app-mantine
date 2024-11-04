@@ -1,8 +1,8 @@
 import { Line } from "react-chartjs-2";
+import { Loader } from "@mantine/core";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
 import { useHistoricalData } from "../../hooks/useHistoricalData";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
-import { MoonLoader } from "react-spinners";
 import styles from "./AreaChart.module.css";
 
 export const AreaChart = ({ instruments }) => {
@@ -14,10 +14,8 @@ export const AreaChart = ({ instruments }) => {
         return (
             <div className={styles.spinnerWrapper}>
                 <p>Loading chart...</p>
-                <MoonLoader
-                    color={localStorageTheme === 'light' ? "#8607f3" : '#ffffff'}
-                    size={15}
-                />
+                <Loader color={localStorageTheme === 'light' ? "#8607f3" : '#ffffff'}
+                    size={15} />
             </div>
         )
     }
@@ -48,13 +46,13 @@ export const AreaChart = ({ instruments }) => {
             x: {
                 title: {
                     display: true,
-                    text: "Date",
+                    // text: "Date",
                 },
             },
             y: {
                 title: {
                     display: true,
-                    text: "Price",
+                    // text: "Price",
                 },
                 beginAtZero: false,
             },
@@ -63,7 +61,6 @@ export const AreaChart = ({ instruments }) => {
 
     return (
         <div className={styles.chartWrapper}>
-            <h2>Area Chart</h2>
             <Line data={chartData} options={chartOptions} className={styles.line} />
         </div>
     );
