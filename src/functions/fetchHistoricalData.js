@@ -4,8 +4,6 @@ import { getDateBackOneMount } from "./getDateBackOneMount";
 const API_KEY = import.meta.env.VITE_API_HISTORICAL_KEY;
 // const REQUEST_DELAY = 10000; // 10 seconds delay for retry
 
-// const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
 export const fetchHistoricalData = async ({ currencyOne, currencyTwo }) => {
     const { startDate, endDate } = getDateBackOneMount();
     const url = `https://api.polygon.io/v2/aggs/ticker/C:${currencyOne}${currencyTwo}/range/1/day/${endDate}/${startDate}?apiKey=${API_KEY}`;
