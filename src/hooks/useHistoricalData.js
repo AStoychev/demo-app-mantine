@@ -1,11 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
 import { fetchHistoricalData } from '../functions/fetchHistoricalData';
+import { setHistoricalCurrencyData, setLoading, setError } from '../redux/slices/historicalCurrencySlice';
 
 export const useHistoricalData = (currencyOne, currencyTwo) => {
-    return useQuery({
+    const dispatch = useDispatch();
+
+    const { data, error, isLoading, isError } = useQuery({
         queryKey: ['historicalData', currencyOne, currencyTwo],
         queryFn: () => fetchHistoricalData({ currencyOne, currencyTwo }),
         staleTime: 1000 * 60 * 5,
+        cacheTime: 1000 * 60 * 10, // Cache data for 10 minutes
         retry: (failureCount, error) => {
             if (error.response?.status === 429) {
                 return false;
@@ -17,4 +22,6 @@ export const useHistoricalData = (currencyOne, currencyTwo) => {
             console.error('Error fetching historical data:', error);
         },
     });
+    dispatch(setHistoricalCurrencyData(data))
+    return { data, error, isLoading, isError }
 };
