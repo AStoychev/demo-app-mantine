@@ -1,0 +1,10 @@
+.wrapper {
+    min-height: 85vh;
+    gap: 10px;
+}
+
+.dataWrapper {
+    width: auto;
+    height: 100%;
+    /* border: 3px solid blue; */
+}
