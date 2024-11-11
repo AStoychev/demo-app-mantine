@@ -15,23 +15,22 @@ function App() {
     const toggleColorScheme = (value) => {
         setColorScheme(value || (colorScheme === 'light' ? 'dark' : 'light'));
     };
-
     localStorage.setItem('theme', colorScheme)
 
     return (
         <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
             <MantineProvider theme={{ colorScheme }}>
+            <Headers />
                 <div className="main-content">
-                    <div className='content'>
-                        <Headers />
+                    {/* <div className='content'> */}
                         <SideBar />
                         <Routes>
                             <Route path='/' element={<Table />} />
                             <Route path='/charts' element={<Chart/>} />
                         </Routes>
-                    </div>
-                    <Footer />
+                    {/* </div> */}
                 </div>
+                <Footer />
             </MantineProvider>
         </ColorSchemeProvider>
     );
