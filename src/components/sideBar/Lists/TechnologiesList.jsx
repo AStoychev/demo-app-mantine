@@ -4,14 +4,22 @@ import { IconCircleCheck } from "@tabler/icons-react";
 export const TechnologiesList = () => {
     return (
         <>
-            <Text size="xl" fw={700}>Technologies Used:</Text>
+            <Text
+                size="xl"
+                fw={700}>
+                Technologies Used:
+            </Text>
             <List
                 spacing="xs"
                 size="sm"
                 center
                 icon={
-                    <ThemeIcon color="teal" size={24} radius="xl">
-                        <IconCircleCheck style={{ width: rem(16), height: rem(16) }} />
+                    <ThemeIcon
+                        color="teal"
+                        size={24}
+                        radius="xl">
+                        <IconCircleCheck
+                            style={{ width: rem(16), height: rem(16) }} />
                     </ThemeIcon>
                 }
             >

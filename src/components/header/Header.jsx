@@ -22,8 +22,7 @@ export const Headers = () => {
 
     return (
         <Header className={styles.header} height={60}>
-            <div className={styles.leftSide}>
-            </div>
+            <div className={styles.leftSide}></div>
             <div className={styles.rightSide}>
                 <Link to="/charts" className={styles.links}>
                     <DashboardButton text={"Charts"} bg={theme.colorScheme === 'light' ? '#20294C' : '#5AA1C2'} color={'white'} />
