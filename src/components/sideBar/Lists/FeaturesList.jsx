@@ -4,7 +4,11 @@ import { IconCircleCheck } from "@tabler/icons-react"
 export const FeaturesList = () => {
     return (
         <>
-            <Text size="xl" fw={700}>App Features:</Text>
+            <Text
+                size="xl"
+                fw={700}>
+                App Features:
+            </Text>
             <List
                 spacing="xs"
                 size="sm"

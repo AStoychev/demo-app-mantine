@@ -1,5 +1,7 @@
 .chartWrapper {
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
     width: 98%;
     height: 400px;
     max-width: 98%;
