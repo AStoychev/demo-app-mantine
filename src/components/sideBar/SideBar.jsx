@@ -5,6 +5,7 @@ import { PurposeListTop } from './Lists/PurposeListTop';
 import { TechnologiesList } from './Lists/TechnologiesList';
 import { FeaturesList } from './Lists/FeaturesList';
 import { PurposeListDown } from './Lists/PurposeListDown';
+import { FaEarlybirds } from "react-icons/fa6";
 
 export const SideBar = () => {
     const [opened, { open, close, toggle }] = useDisclosure(false);
@@ -25,9 +26,15 @@ export const SideBar = () => {
                     wrap="wrap"
                 >
                     <Title order={3}>About This Demo App</Title>
-                    <Text>
+                    <Flex gap={3} align="center" justify="center">
+                        <Text>
+                            Welcome to my demo application!
+                        </Text>
+                        <FaEarlybirds size="30px" color='rgba(38, 117, 98, 0.8)' />
+                    </Flex>
+                    {/* <Text>
                         Welcome to my demo application! 🎉
-                    </Text>
+                    </Text> */}
                     <PurposeListTop />
                     <TechnologiesList />
                     <FeaturesList />

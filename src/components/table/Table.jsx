@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Accordion, Text } from '@mantine/core';
 import { MantineReactTable, useMantineReactTable } from 'mantine-react-table';
-import { useSelector } from 'react-redux';
 import { useCurrencyData } from '../../hooks/useCurrencyData';
 import { AreaChart } from '../areaChart/AreaChart';
 import { Marquee } from '../marquee/Marquee';
