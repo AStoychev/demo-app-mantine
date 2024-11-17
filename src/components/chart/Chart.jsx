@@ -15,14 +15,12 @@ export const Chart = () => {
             <Flex className={styles.dataWrapper}>
                 {currencyPairs.map(({from, to}) => {
                     const { data, isLoading, error } = useHistoricalData(from, to);
-
                     if (isLoading) {
                         return <Text key={`${from}-${to}`}>Loading {from}/{to}...</Text>;
                     }
                     if (error) {
                         return <Text key={`${from}-${to}`}>Error loading {from}/{to}</Text>;
                     }
-
                     return (
                         <AreaChart key={`${from}/${to}`} instruments={`${from}/${to}`}/>
                     );
