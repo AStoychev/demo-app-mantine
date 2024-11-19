@@ -4,6 +4,8 @@
     flex-direction: column;
     /* justify-content: space-between; */
     text-align: center;
+    align-items: center;
+    justify-content: center;
     /* justify-content: center; */
 }
 /* #root {

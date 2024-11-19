@@ -5,6 +5,7 @@ import { Headers } from './components/header/Header';
 import { SideBar } from './components/sideBar/SideBar';
 import { Table } from './components/table/Table';
 import { Chart } from './components/chart/Chart';
+import { Marquee } from './components/marquee/Marquee';
 import { Footer } from './components/footer/Footer';
 import './App.css';
 
@@ -20,14 +21,15 @@ function App() {
     return (
         <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
             <MantineProvider theme={{ colorScheme }}>
-            <Headers />
+                <Headers />
+                <SideBar />
+                <Marquee />
                 <div className="main-content">
                     {/* <div className='content'> */}
-                        <SideBar />
-                        <Routes>
-                            <Route path='/' element={<Table />} />
-                            <Route path='/charts' element={<Chart/>} />
-                        </Routes>
+                    <Routes>
+                        <Route path='/' element={<Table />} />
+                        <Route path='/charts' element={<Chart />} />
+                    </Routes>
                     {/* </div> */}
                 </div>
                 <Footer />
