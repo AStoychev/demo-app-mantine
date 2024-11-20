@@ -17,7 +17,7 @@
     margin-left: 100px;
 }
 
-.header .rightSide {
+.header .wrapper {
     display: flex;
     flex-direction: row;
     flex: 1;

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Header, Group, UnstyledButton, useMantineTheme } from '@mantine/core';
+import { Header, Group, Flex, UnstyledButton, useMantineTheme } from '@mantine/core';
 import { DashboardButton } from '../buttons/openCloseSideBarButtons/dashboarButton/DashboardButton';
 import { ChangeTheme } from '../changeTheme/ChangeTheme';
 import { AiOutlineStock } from "react-icons/ai";
@@ -22,20 +22,27 @@ export const Headers = () => {
 
     return (
         <Header className={styles.header} height={60}>
-            <div className={styles.leftSide}></div>
-            <div className={styles.rightSide}>
+            <div className={styles.wrapper}>
                 <Link to="/charts" className={styles.links}>
                     <DashboardButton text={"Charts"} bg={theme.colorScheme === 'light' ? '#20294C' : '#5AA1C2'} color={'white'} />
                 </Link>
-                <Group sx={groupStyles}>
+                <Flex align="center" justify="center" gap={5} sx={groupStyles}>
                     <AiOutlineStock />
                     <UnstyledButton>Stocks</UnstyledButton>
-                </Group>
+                </Flex>
+                {/* <Group sx={groupStyles}>
+                    <AiOutlineStock />
+                    <UnstyledButton>Stocks</UnstyledButton>
+                </Group> */}
                 <Link to="/" className={styles.links}>
-                    <Group sx={groupStyles}>
+                    <Flex align="center" justify="center" gap={5} sx={groupStyles}>
                         <FcCurrencyExchange />
                         <UnstyledButton>Currency</UnstyledButton>
-                    </Group>
+                    </Flex>
+                    {/* <Group sx={groupStyles}>
+                        <FcCurrencyExchange />
+                        <UnstyledButton>Currency</UnstyledButton>
+                    </Group> */}
                 </Link>
                 <ChangeTheme />
             </div>
