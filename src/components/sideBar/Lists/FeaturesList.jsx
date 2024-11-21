@@ -11,7 +11,7 @@ export const FeaturesList = () => {
             </Text>
             <List
                 spacing="xs"
-                size="sm"
+                size="md"
                 center
                 icon={
                     <ThemeIcon color="teal" size={24} radius="xl">
