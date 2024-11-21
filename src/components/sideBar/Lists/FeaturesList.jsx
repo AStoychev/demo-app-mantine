@@ -10,7 +10,6 @@ export const FeaturesList = () => {
                 App Features:
             </Text>
             <List
-            
                 spacing="xs"
                 size="md"
                 center
