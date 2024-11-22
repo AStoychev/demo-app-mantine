@@ -11,7 +11,7 @@ export const TechnologiesList = () => {
             </Text>
             <List
                 spacing="xs"
-                size="sm"
+                size="md"
                 center
                 icon={
                     <ThemeIcon
