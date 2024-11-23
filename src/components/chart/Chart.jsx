@@ -5,15 +5,15 @@ import styles from "./Chart.module.css";
 
 export const Chart = () => {
     const currencyPairs = [
-        { from: "EUR", to: "USD"},
-        { from: "GBP", to: "USD"},
-        { from: "USD", to: "CHF"},
+        { from: "EUR", to: "USD" },
+        { from: "GBP", to: "USD" },
+        { from: "USD", to: "CHF" },
     ];
 
     return (
         <Flex className={styles.wrapper} align="center">
             <Flex className={styles.dataWrapper}>
-                {currencyPairs.map(({from, to}) => {
+                {currencyPairs.map(({ from, to }) => {
                     const { data, isLoading, error } = useHistoricalData(from, to);
                     if (isLoading) {
                         return <Text key={`${from}-${to}`}>Loading {from}/{to}...</Text>;
@@ -22,7 +22,10 @@ export const Chart = () => {
                         return <Text key={`${from}-${to}`}>Error loading {from}/{to}</Text>;
                     }
                     return (
-                        <AreaChart key={`${from}/${to}`} instruments={`${from}/${to}`}/>
+                        <div className={styles.areaWrapper}>
+                            <AreaChart key={`${from}/${to}`} instruments={`${from}/${to}`} />
+                        </div>
+
                     );
                 })}
             </Flex>
