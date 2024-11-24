@@ -30,19 +30,11 @@ export const Headers = () => {
                     <AiOutlineStock />
                     <UnstyledButton>Stocks</UnstyledButton>
                 </Flex>
-                {/* <Group sx={groupStyles}>
-                    <AiOutlineStock />
-                    <UnstyledButton>Stocks</UnstyledButton>
-                </Group> */}
                 <Link to="/" className={styles.links}>
                     <Flex align="center" justify="center" gap={5} sx={groupStyles}>
                         <FcCurrencyExchange />
                         <UnstyledButton>Currency</UnstyledButton>
                     </Flex>
-                    {/* <Group sx={groupStyles}>
-                        <FcCurrencyExchange />
-                        <UnstyledButton>Currency</UnstyledButton>
-                    </Group> */}
                 </Link>
                 <ChangeTheme />
             </div>
