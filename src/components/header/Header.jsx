@@ -24,14 +24,33 @@ export const Headers = () => {
         <Header className={styles.header} height={60}>
             <div className={styles.wrapper}>
                 <Link to="/charts" className={styles.links}>
-                    <DashboardButton text={"Charts"} bg={theme.colorScheme === 'light' ? '#20294C' : '#5AA1C2'} color={'white'} />
+                    <DashboardButton text={"Charts"}
+                        bg={
+                            theme.colorScheme === 'light'
+                                ?
+                                '#20294C'
+                                :
+                                '#5AA1C2'
+                        }
+                        color={'white'}
+                    />
                 </Link>
-                <Flex align="center" justify="center" gap={5} sx={groupStyles}>
+                <Flex
+                    align="center"
+                    justify="center"
+                    gap={5}
+                    sx={groupStyles}
+                >
                     <AiOutlineStock />
                     <UnstyledButton>Stocks</UnstyledButton>
                 </Flex>
                 <Link to="/" className={styles.links}>
-                    <Flex align="center" justify="center" gap={5} sx={groupStyles}>
+                    <Flex
+                        align="center"
+                        justify="center"
+                        gap={5}
+                        sx={groupStyles}
+                    >
                         <FcCurrencyExchange />
                         <UnstyledButton>Currency</UnstyledButton>
                     </Flex>

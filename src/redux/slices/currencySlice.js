@@ -9,6 +9,7 @@ const initialState = {
 const currencySlice = createSlice({
     name: "currency",
     initialState,
+    
     reducers: {
         setCurrencyData: (state, action) => {
             state.data = action.payload;

@@ -22,7 +22,7 @@ export const Chart = () => {
                         return <Text key={`${from}-${to}`}>Error loading {from}/{to}</Text>;
                     }
                     return (
-                        <div className={styles.areaWrapper}>
+                        <div className={styles.areaWrapper} key={`${from}-${to}`}>
                             <AreaChart key={`${from}/${to}`} instruments={`${from}/${to}`} />
                         </div>
 
