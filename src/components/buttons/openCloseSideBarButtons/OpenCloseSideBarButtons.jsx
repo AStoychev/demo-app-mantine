@@ -3,7 +3,10 @@ import styles from "./OpenCloseSideBarButtons.module.css";
 
 export const OpenCloseSideBarButtons = ({ open, close, opened }) => {
     return (
-        <div className={styles.wrapper} onClick={opened ? close : open}>
+        <div
+            className={styles.wrapper}
+            onClick={opened ? close : open}
+        >
             <div
                 style={{
                     transform: opened
