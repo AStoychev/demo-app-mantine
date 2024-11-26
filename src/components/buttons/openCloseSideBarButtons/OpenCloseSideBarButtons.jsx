@@ -8,7 +8,6 @@ export const OpenCloseSideBarButtons = ({ open, close, opened }) => {
             onClick={opened ? close : open}
         >
             <div
-            
                 style={{
                     transform: opened
                         ? "rotate(0deg)"
