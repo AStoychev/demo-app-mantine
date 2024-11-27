@@ -14,7 +14,11 @@ export const FeaturesList = () => {
                 size="md"
                 center
                 icon={
-                    <ThemeIcon color="teal" size={24} radius="xl">
+                    <ThemeIcon
+                        color="teal"
+                        size={24}
+                        radius="xl"
+                    >
                         <IconCircleCheck style={{ width: rem(16), height: rem(16) }} />
                     </ThemeIcon>
                 }
