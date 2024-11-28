@@ -7,6 +7,7 @@ const historicalCurrencySlice = createSlice({
         isLoading: false,
         error: null
     },
+    
     reducers: {
         setHistoricalCurrencyData: (state, action) => {
             state.data = action.payload;
