@@ -3,7 +3,7 @@ import { Accordion, Text } from '@mantine/core';
 import { MantineReactTable, useMantineReactTable } from 'mantine-react-table';
 import { useCurrencyData } from '../../hooks/useCurrencyData';
 import { AreaChart } from '../areaChart/AreaChart';
-import { Marquee } from '../marquee/Marquee';
+// import { Marquee } from '../marquee/Marquee';
 
 import styles from "./Table.module.css";
 
@@ -78,7 +78,7 @@ export const Table = () => {
 
     return (
         <>
-            <Marquee />
+            {/* <Marquee /> */}
             <div className={styles.wrapper}>
                 <MantineReactTable
                     columns={columns}
