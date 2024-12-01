@@ -7,11 +7,13 @@ import { FeaturesList } from './Lists/FeaturesList';
 import { PurposeListDown } from './Lists/PurposeListDown';
 import { FaEarlybirds } from "react-icons/fa6";
 
+import styles from "./SideBar.module.css";
+
 export const SideBar = () => {
     const [opened, { open, close, toggle }] = useDisclosure(false);
 
     return (
-        <>
+        <div className={styles.wrapper}>
             <Drawer offset={8} radius="md" size="md" opened={opened} onClose={close}
                 closeButtonProps={{
                     size: 'lg',
@@ -41,7 +43,9 @@ export const SideBar = () => {
                     <PurposeListDown />
                 </Flex>
             </Drawer>
-            <OpenCloseSideBarButtons open={open} close={close} toggle={toggle} />
-        </>
+            <div className={styles.openCloseButton}>
+                <OpenCloseSideBarButtons open={open} close={close} toggle={toggle} />
+            </div>
+        </div>
     );
 }

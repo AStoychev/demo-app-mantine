@@ -1,0 +1,23 @@
+.wrapper {
+    /* position: relative; */
+}
+
+.wrapper .openCloseButton {
+    position: absolute;
+        top: 0px;
+        left: 0px;
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (max-width: 767px) {
+    .wrapper .openCloseButton {
+        position: absolute;
+        top: 85px;
+        left: 0px;
+    }
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+}
