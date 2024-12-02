@@ -10,7 +10,7 @@ export const useHistoricalData = (currencyOne, currencyTwo) => {
         queryKey: ['historicalData', currencyOne, currencyTwo],
         queryFn: () => fetchHistoricalData({ currencyOne, currencyTwo }),
         staleTime: 1000 * 60 * 5,
-        cacheTime: 1000 * 60 * 10, // Cache data for 10 minutes
+        cacheTime: 1000 * 60 * 10,
         retry: (failureCount, error) => {
             if (error.response?.status === 429) {
                 return false;

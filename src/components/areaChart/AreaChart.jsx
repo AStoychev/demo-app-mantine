@@ -8,7 +8,7 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 import styles from "./AreaChart.module.css";
 
 export const AreaChart = ({ instruments }) => {
-    const chartRef = useRef(null); // Create a ref for the chart
+    const chartRef = useRef(null); 
     const localStorageTheme = localStorage.getItem('theme');
     const [currencyOne, currencyTwo] = instruments.split("/");
     const { data, isLoading, error } = useHistoricalData(currencyOne, currencyTwo);
@@ -30,11 +30,10 @@ export const AreaChart = ({ instruments }) => {
     const timestamps = data.t.map((timestamp) => new Date(timestamp).toLocaleDateString());
     const closePrices = data.c;
 
-    // Create a gradient fill color
     const createGradient = (ctx) => {
-        const gradient = ctx.createLinearGradient(0, 0, 0, 400); // Height for the gradient
-        gradient.addColorStop(0, "rgba(155,129,236)"); // Darker color at the top
-        gradient.addColorStop(1, "rgba(155,129,236, 0.2)"); // Lighter color at the bottom
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, "rgba(155,129,236)");
+        gradient.addColorStop(1, "rgba(155,129,236, 0.2)");
         return gradient;
     };
 
@@ -45,11 +44,9 @@ export const AreaChart = ({ instruments }) => {
                 label: `${data.pairs[0]} / ${data.pairs[1]}`,
                 data: closePrices,
                 fill: true,
-                // borderColor: "rgba(255,99,132,1)",  
-                // backgroundColor: "rgba(255,99,132,0.2)", 
                 backgroundColor: chartRef.current
-                    ? createGradient(chartRef.current.ctx) // Apply gradient fill if chart is loaded
-                    : "rgba(155,129,236)", // Fallback color 
+                    ? createGradient(chartRef.current.ctx)
+                    : "rgba(155,129,236)",
                 tension: 0.3,
                 pointRadius: 3,
                 pointBackgroundColor: "rgba(129, 171, 236, 1)",
@@ -94,16 +91,6 @@ export const AreaChart = ({ instruments }) => {
             duration: 1000,
             easing: 'easeInQuad',
             delay: (context) => context.datasetIndex * 500,
-
-            // duration: 1000,
-            // easing: 'linear',
-            // backgroundColor: {
-            //     type: 'color',
-            //     easing: 'easeInSine',
-            //     from: 'rgba(75,192,192,0.2)',
-            //     to: 'rgba(75,192,192,0.6)',
-            //     duration: 1500,
-            // },
         },
         plugins: {
             tooltip: {
