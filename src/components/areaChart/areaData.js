@@ -32,7 +32,6 @@ const data = [
 
 const chartData = {
     labels: data.map((point) => new Date(point.t).toLocaleDateString()),
-    
     datasets: [
         {
             label: "Close Price",
