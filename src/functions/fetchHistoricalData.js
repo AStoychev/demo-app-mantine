@@ -2,7 +2,6 @@ import axios from "axios";
 import { getDateBackOneMount } from "./getDateBackOneMount";
 
 const API_KEY = import.meta.env.VITE_API_HISTORICAL_KEY;
-// const REQUEST_DELAY = 10000; // 10 seconds delay for retry
 
 export const fetchHistoricalData = async ({ currencyOne, currencyTwo }) => {
     const { startDate, endDate } = getDateBackOneMount();
@@ -34,7 +33,7 @@ export const fetchHistoricalData = async ({ currencyOne, currencyTwo }) => {
         //     // Log a generic error if no response
         //     console.error("Error fetching historical data: No response from server.");
         // }
-        throw error; // Rethrow to handle it elsewhere if needed
+        throw error;
     }
 }
 
