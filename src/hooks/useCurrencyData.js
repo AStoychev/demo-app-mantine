@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux";
 import { fetchAllCurrencyData } from "../functions/fetchCurrencyData";
 import { setCurrencyData, setLoading, setError } from "../redux/slices/currencySlice";
 
-export const useCurrencyData = (fromCurrency, toCurrency) => {
-    
+export const useCurrencyData = (fromCurrency, toCurrency) => {    
     const dispatch = useDispatch();
 
     const { data, error, isLoading, isError} = useQuery({
