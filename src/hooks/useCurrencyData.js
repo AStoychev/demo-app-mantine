@@ -10,8 +10,8 @@ export const useCurrencyData = (fromCurrency, toCurrency) => {
         queryKey: ["currencyData", fromCurrency, toCurrency],
         queryFn: fetchAllCurrencyData,
         refetchOnWindowFocus: false,
-        staleTime: 1000 * 60 * 5, // Data is fresh for 5 minutes
-        cacheTime: 1000 * 60 * 10, // Cache data for 10 minutes
+        staleTime: 1000 * 60 * 5,
+        cacheTime: 1000 * 60 * 10,
         retry: 2,
     });
     dispatch(setCurrencyData(data))
