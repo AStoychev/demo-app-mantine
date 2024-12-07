@@ -54,9 +54,17 @@ The purpose of this demo is to display Stock and Forex data, along with interact
 <h3 align="center">Dashboard Mobie - Dark Mode</h3>
 <p align="center">
   <img src="https://github.com/AStoychev/demo-app-mantine/blob/master/public/Screenshots/mobile-dark.jpg">
-</p>"
+</p>
 
 <h3 align="center">Chart - Light Mode</h3>
 <p align="center">
   <img src="https://github.com/AStoychev/demo-app-mantine/blob/master/public/Screenshots/chart-light.jpg">
-</p>"
+</p>
+
+## About
+This app is for demonstration purposes only and is designed to highlight my expertise in building scalable,
+interactive applications. I hope this demo provides a clear example of how these technologies work together to
+create a rich, real-time data experience.
+
+
+**Feel free to explore the features, and don’t hesitate to reach out with any questions or feedback!**
