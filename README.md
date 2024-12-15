@@ -84,4 +84,4 @@ interactive applications. I hope this demo provides a clear example of how these
 create a rich, real-time data experience.
 
 
-**Feel free to explore the features, and don’t hesitate to reach out with any questions or feedback!**
+**Feel free to explore the features and don’t hesitate to reach out with any questions or feedback!**
