@@ -78,6 +78,7 @@ The purpose of this demo is to display Stock and Forex data, along with interact
   <img src="https://github.com/AStoychev/demo-app-mantine/blob/master/public/Screenshots/chart-dark.jpg">
 </p>
 
+
 ## About
 This app is for demonstration purposes only and is designed to highlight my expertise in building scalable,
 interactive applications. I hope this demo provides a clear example of how these technologies work together to
