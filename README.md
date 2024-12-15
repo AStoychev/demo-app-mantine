@@ -41,6 +41,18 @@ The purpose of this demo is to display Stock and Forex data, along with interact
   <img src="https://github.com/AStoychev/demo-app-mantine/blob/master/public/Screenshots/dashboard-open-dark.jpg">
 </p>
 
+<h3 align="center">Sidebar</h3>
+<p align="center">
+  <img src="https://github.com/AStoychev/demo-app-mantine/blob/master/public/Screenshots/side-bar.jpg">
+</p>
+
+<h3 align="center">Sidebar Mobile - Dark Mode</h3>
+<p align="center">
+  <img src="https://github.com/AStoychev/demo-app-mantine/blob/master/public/Screenshots/sidebar-dark.jpg">
+</p>
+
+
+
 <h3 align="center">Dashboard Mobie - Light Mode</h3>
 <p align="center">
   <img src="https://github.com/AStoychev/demo-app-mantine/blob/master/public/Screenshots/dashboard.jpg">
@@ -59,6 +71,11 @@ The purpose of this demo is to display Stock and Forex data, along with interact
 <h3 align="center">Chart - Light Mode</h3>
 <p align="center">
   <img src="https://github.com/AStoychev/demo-app-mantine/blob/master/public/Screenshots/chart-light.jpg">
+</p>
+
+<h3 align="center">Chart - Dark Mode</h3>
+<p align="center">
+  <img src="https://github.com/AStoychev/demo-app-mantine/blob/master/public/Screenshots/chart-dark.jpg">
 </p>
 
 ## About
